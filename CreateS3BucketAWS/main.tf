@@ -16,15 +16,24 @@ resource "aws_s3_bucket" "MyBucket" {
         }
       }
     }
-    block_public_access {
-       block_public_acls       = true
-       block_public_policy     = true
-       ignore_public_acls      = true
-       restrict_public_buckets = true
-    }
+#    block_public_access {
+#       block_public_acls       = true
+#       block_public_policy     = true
+#       ignore_public_acls      = true
+#       restrict_public_buckets = true
+#    }
 
     tags = {
         Name            = var.mehrdads3bucket
         Environment     = var.environment
     } 
+}
+
+resource "aws_s3_bucket_public_access_block" "public_access_block" {
+  bucket        = aws_s3_bucket.MyBucket.id 
+  block_public_acls = true
+  block_public_policy = true
+  ignore_public_acls = true
+  restrict_public_buckets = true
+  
 }
