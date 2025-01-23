@@ -8,7 +8,7 @@ variable "aws_region" {
 variable "ami_id" {
     description = "Your AMI ID"
     type = string
-    default = "ami-0c0033445g" # please replace the ami id in aws account and region
+    default = "ami-04b4f1a9cf54c11d0" # please replace the ami id in aws account and region
 }
 
 variable "instance_type" {
